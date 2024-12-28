@@ -1,6 +1,9 @@
 from datetime import datetime, timezone, timedelta
 
 class TimeHandling():
+    """
+    class to deal with time zones and time handling 
+    """
     tz = timezone.utc
 
     def __init__(self,offset, name):
@@ -12,7 +15,6 @@ class TimeHandling():
             return datetime.now(cls.tz)
         
 
-
     def get_time_in_locale(self, given_time_utc=None):
         tz = timezone(timedelta(hours=self._offset), self._name)
         if given_time_utc is not None:
@@ -21,6 +23,9 @@ class TimeHandling():
 
 
 class ConfirmationCode:
+    """
+    Class to represent the conformation code which is associated with every transaction
+    """
     def __init__(self,transaction_type,account_number,transaction_count,time_handling,given_time=None):
         self.account_number = account_number
         self.transaction_code = transaction_type
@@ -38,6 +43,9 @@ class ConfirmationCode:
 
 
 class Account():
+    """
+    class to represent a bank account
+    """
 
     #class attributes
     monthly_interest_rate = 0.05
