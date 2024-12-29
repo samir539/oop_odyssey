@@ -98,8 +98,14 @@ class Account():
 
     
     @classmethod
-    def change_monthly_interest_rate(cls,new_rate):
+    def get_interest_rate(cls):
+        return cls.monthly_interest_rate
+
+    @classmethod
+    def set_interest_rate(cls,new_rate):
         cls.monthly_interest_rate = new_rate
+    
+
 
     def _generate_confirmation_code(self,transaction_type):
         generated_confirmation_code = ConfirmationCode(self.transaction_type_dict[transaction_type],self._account_number,self.transaction_count,self._time_handling)
