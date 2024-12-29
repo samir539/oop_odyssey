@@ -67,7 +67,7 @@ class Account():
     
     @first_name.setter 
     def first_name(self,new_first_name):
-        self._first_name = new_first_name
+        self.validate_and_set('_first_name',new_first_name,'first name')
 
     @property
     def last_name(self):
@@ -75,7 +75,7 @@ class Account():
 
     @last_name.setter
     def last_name(self, new_last_name):
-        self._last_name = new_last_name
+        self.validate_and_set('_last_name',new_last_name,'last name')
 
     @property
     def full_name(self):
@@ -90,6 +90,11 @@ class Account():
         if new_balence < 0:
             return "you cannot have a negative balence"
         self._balence = new_balence
+
+    def validate_and_set(self,attribute_to_set,value,field_to_set):
+        if value is None or len(str(value).strip()) == 0:
+            raise ValueError(f"the {field_to_set} cannot be none or empty")
+        setattr(self,attribute_to_set,value)
 
     
     @classmethod
