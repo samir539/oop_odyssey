@@ -37,10 +37,17 @@ class Mod:
             # a is congruent to b mod n  if n | (a-b)
             return other%self.mod == self.value
         return False 
+    
+    def __hash__(self):
+        return hash((self.mod, self._value))
 
 
 if __name__ == "__main__":
     myMod = Mod(3,10)
+    myMod2 = Mod(11,10)
     myVal = 24
+    val  = hash(myMod)
+    val2 = hash(myMod2)
+    print(hex(id(val)),hex(id(val2)))
     print(myVal == myMod)
     print(myMod.__dict__)
