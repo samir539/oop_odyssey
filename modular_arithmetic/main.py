@@ -31,8 +31,8 @@ class Mod:
     
     def __eq__(self,other):
         """implement mod congruency"""
-        if isinstance(other, Mod):
-            return self.mod == other.mod 
+        if isinstance(other, Mod) and self.nod == other.mod:
+            return self.value == other.value
         elif isinstance(other, Integral):
             # a is congruent to b mod n  if n | (a-b)
             return other%self.mod == self.value
@@ -40,6 +40,8 @@ class Mod:
     
     def __hash__(self):
         return hash((self.mod, self._value))
+    
+
 
 
 if __name__ == "__main__":
