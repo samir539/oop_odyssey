@@ -13,7 +13,6 @@ class Mod:
         if self._validate_value(value):
             self._value = value % self.mod 
     
-
     @property
     def value(self):
         return self._value
