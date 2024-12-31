@@ -26,8 +26,21 @@ class Mod:
         
     def _validate_value(self,value):
         if isinstance(value, Integral):
-            return True 
+            return True
+
+    
+    def __eq__(self,other):
+        """implement mod congruency"""
+        if isinstance(other, Mod):
+            return self.mod == other.mod 
+        elif isinstance(other, Integral):
+            # a is congruent to b mod n  if n | (a-b)
+            return other%self.mod == self.value
+        return False 
 
 
-myMod = Mod(10,3)
-print(myMod.__dict__)
+if __name__ == "__main__":
+    myMod = Mod(3,10)
+    myVal = 24
+    print(myVal == myMod)
+    print(myMod.__dict__)
